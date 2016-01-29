@@ -1,6 +1,8 @@
 ﻿
 /// <reference path="_reference.ts"/>
 
+//import CScreen = config.Screen;     (Alias)
+
 //global variables
 var canvas:HTMLElement;             //Container
 var stage:createjs.Stage;           // Stage is an array of objects
@@ -8,27 +10,36 @@ var stage:createjs.Stage;           // Stage is an array of objects
 var helloLabel:createjs.Text;              
 
 function init():void{
+    //create a reference to the HTML canvas element
     canvas  = document.getElementById("canvas");
+    
+    //create our main display list container
     stage = new createjs.Stage(canvas);
-    createjs.Ticker.setFPS(60);     // set the frame rate to 60 frames per second. Try to keep it 60 or lower
+    
+    // set the frame rate to 60 frames per second. Try to keep it 60 or lower
+    createjs.Ticker.setFPS(config.Game.FPS);  
+    
+    //create an event listener to count off frames   
     createjs.Ticker.on("tick", gameLoop,this);
     main();
 }
 
 
+//Main Game Loop function that handles what happens each "tick" or frame
 function gameLoop(event:createjs.Event):void{           // All animations will do in gameLoop
     helloLabel.rotation += 6;
     stage.update();             // Refresh or redraw everything on stage
 }
 
+//This function is executed one time
 function main(){
     console.log("Game Started...");
-    helloLabel = new createjs.Text("Hello World","60px Consolas", "#000000");
+    helloLabel = new createjs.Text("Gurpreet Benipal","50px Consolas", "#C0F050");
     helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
     helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
     
-    helloLabel.x = 320;
-    helloLabel.y = 240;
+    helloLabel.x = config.Screen.CENTER_X;
+    helloLabel.y = config.Screen.CENTER_Y;
     stage.addChild(helloLabel);
 }
 
