@@ -7,7 +7,7 @@
 var canvas:HTMLElement;             //Container
 var stage:createjs.Stage;           // Stage is an array of objects
 
-var helloLabel:createjs.Text;              
+var menu:scenes.Menu;
 
 function init():void{
     //create a reference to the HTML canvas element
@@ -27,20 +27,13 @@ function init():void{
 
 //Main Game Loop function that handles what happens each "tick" or frame
 function gameLoop(event:createjs.Event):void{           // All animations will do in gameLoop
-    helloLabel.rotation += 6;
+   menu.update();
     stage.update();             // Refresh or redraw everything on stage
 }
 
 //This function is executed one time
 function main(){
-    console.log("Game Started...");
-    helloLabel = new createjs.Text("Gurpreet Benipal","50px Consolas", "#C0F050");
-    helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
-    helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
-    
-    helloLabel.x = config.Screen.CENTER_X;
-    helloLabel.y = config.Screen.CENTER_Y;
-    stage.addChild(helloLabel);
+    menu = new scenes.Menu();
 }
 
 
