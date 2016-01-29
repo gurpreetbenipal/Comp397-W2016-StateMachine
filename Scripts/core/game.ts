@@ -1,6 +1,58 @@
 ﻿
 /// <reference path="_reference.ts"/>
 
+//global variables
+var canvas:HTMLElement;             //Container
+var stage:createjs.Stage;           // Stage is an array of objects
+
+var helloLabel:createjs.Text;              
+
+function init():void{
+    canvas  = document.getElementById("canvas");
+    stage = new createjs.Stage(canvas);
+    createjs.Ticker.setFPS(60);     // set the frame rate to 60 frames per second. Try to keep it 60 or lower
+    createjs.Ticker.on("tick", gameLoop,this);
+    main();
+}
+
+
+function gameLoop(event:createjs.Event):void{           // All animations will do in gameLoop
+    stage.update();             // Refresh or redraw everything on stage
+}
+
+function main(){
+    console.log("Game Started...");
+    helloLabel = new createjs.Text("Hello World","60px Consolas", "#000000");
+    stage.addChild(helloLabel);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // GLOBAL GAME FRAMEWORK VARIABLES
 var canvas: HTMLElement;
 var stage: createjs.Stage;
@@ -72,4 +124,4 @@ function changeState(): void {
 
     stateFunction();
 }
- 
+ */
