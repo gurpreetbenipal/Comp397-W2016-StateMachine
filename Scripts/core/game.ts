@@ -17,7 +17,7 @@ function init():void{
 
 
 function gameLoop(event:createjs.Event):void{           // All animations will do in gameLoop
-    helloLabel.rotation += 5;
+    helloLabel.rotation += 6;
     stage.update();             // Refresh or redraw everything on stage
 }
 

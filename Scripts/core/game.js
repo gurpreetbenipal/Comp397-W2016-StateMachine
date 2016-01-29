@@ -11,7 +11,7 @@ function init() {
     main();
 }
 function gameLoop(event) {
-    helloLabel.rotation += 5;
+    helloLabel.rotation += 6;
     stage.update(); // Refresh or redraw everything on stage
 }
 function main() {
